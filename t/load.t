@@ -1,5 +1,5 @@
 my @classes = qw(
-	MojoX::HTMX::Demo
+	MojoX::Demo::HTMX
 	);
 
 use Test::More;
