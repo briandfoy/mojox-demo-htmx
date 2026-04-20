@@ -8,6 +8,8 @@ use MojoX::Demo::Model::Items;
 
 our $VERSION = '0.901';
 
+=encoding utf8
+
 =head1 NAME
 
 MojoX::Demo::HTMX - a demo of using HTMX, in a Mojo app
