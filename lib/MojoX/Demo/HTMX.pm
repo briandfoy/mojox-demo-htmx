@@ -44,7 +44,6 @@ sub startup ($app) {
 	$app->secrets($config->{secrets});
 
 	my $model = MojoX::Demo::Model::Items->new;
-	$app->log->debug( "MODEL: ", Mojo::Util::dumper($model) );
 	$app->helper( model => sub ($c) { $model } );
 
 	my $r = $app->routes;
