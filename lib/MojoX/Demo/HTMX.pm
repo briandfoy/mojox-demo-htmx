@@ -22,6 +22,14 @@ To run the demo:
 
 =head1 DESCRIPTION
 
+=over 4
+
+=item * startup
+
+Everything that needs to happen to start the web application.
+
+=back
+
 =head1 SOURCE AVAILABILITY
 
 This module is on Github:
@@ -51,7 +59,7 @@ sub startup ($app) {
 	my $r = $app->routes;
 	push @{$r->namespaces}, 'MojoX::Demo::Controller';
 
-	$r->get('/')    ->to('Example#welcome');
+	$r->get('/')    ->to('Example#main');
 	$r->post('/add')->to('Example#add');
 	}
 
