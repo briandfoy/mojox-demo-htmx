@@ -1,0 +1,6 @@
+<!-- item ----------------------------------------------------------------- -->
+<div class="list-item bg-light border rounded mb-4 pt-2">
+    <p class="item-first-line"><span class="item-label fw-bold font-weight-bold pl-2 mb-1"><%= $item->label %><span> - added <%= $item->date_added %></p>
+    <p class="item-description pl-2"><%= length $item->{'description'} ? $item->description : '(no description)' %></p>
+</div>
+<!-- ---------------------------------------------------------------------- -->
