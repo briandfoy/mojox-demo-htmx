@@ -144,7 +144,6 @@ sub items ($self) { [ values $self->_items->%* ] }
 
 sub items_not_deleted ($self) {
 	my @items = grep { ! $_->deleted } values $self->_items->%* ;
-	say STDERR "items_not_deleted: " . @items;
 	\@items;
 	}
 
