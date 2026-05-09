@@ -1,5 +1,8 @@
+use v5.42;
 package MojoX::Demo::Controller::Example;
 use Mojo::Base 'Mojolicious::Controller', -signatures;
+
+=encoding utf8
 
 =head1 NAME
 
@@ -52,6 +55,14 @@ sub main ($c) {
 	$c->render( template => 'main_spa', format => 'html', %vars );
 	}
 
+sub activate ($c) {
+	my $id = $c->param('id');
+	$c->app->log->debug( "In activate for <$id>" );
+
+	my $item = $c->model->activate($id);
+	$c->render( template => 'partials/list-item', format => 'html', item => $item );
+	}
+
 sub add ($c) {
 	my $item = $c->model->add(
 		label       => $c->param('label'),
@@ -59,6 +70,42 @@ sub add ($c) {
 		);
 
 	$c->render( template => 'partials/list-item', format => 'html', item => $item );
+	}
+
+sub deactivate ($c) {
+	my $id = $c->param('id');
+	$c->app->log->debug( "In deactivate for <$id>" );
+
+	my $item = $c->model->deactivate($id);
+	$c->render( template => 'partials/list-item', format => 'html', item => $item );
+	}
+
+sub delete ($c) {
+	my $id = $c->param('id');
+	$c->app->log->debug( "In delete for <$id>" );
+
+	$c->model->delete($id);
+	$c->render( template => 'partials/deleted-list-item', format => 'html' );
+	}
+
+sub edit ($c) {
+	my $id = $c->param('id');
+	$c->app->log->debug( "In edit for <$id>" );
+
+	my $item = $c->model->get($id);
+
+	$c->render( template => 'partials/edit-list-item', format => 'html', item => $item );
+	}
+
+sub save ($c) {
+	my $id = $c->param('id');
+	$c->app->log->debug( "In save for <$id>" );
+
+	if( $c->param('action') eq 'save' ) {
+		$c->model->update( $id, $c->param('label'), $c->param('description') );
+		}
+
+	$c->render( template => 'partials/list-item', format => 'html', item => $c->model->get($id) );
 	}
 
 __PACKAGE__;

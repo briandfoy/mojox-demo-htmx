@@ -1,6 +1,49 @@
-<!-- item ----------------------------------------------------------------- -->
-<div class="list-item bg-light border rounded mb-4 pt-2">
-    <p class="item-first-line"><span class="item-label fw-bold font-weight-bold pl-2 mb-1"><%= $item->label %><span> - added <%= $item->date_added %></p>
-    <p class="item-description pl-2"><%= length $item->{'description'} ? $item->description : '(no description)' %></p>
+% my $bg_color         = $item->active ? '#f8f9fa' : '#ffc10730';
+% my $active_operation = $item->active ? 'deactivate' : 'activate';
+% my $active_icon      = $item->active ? 'bi-pause-circle' : 'bi-play';
+
+<div id="item-<%= $item->id %>"
+		class="list-item border rounded-3 mb-4 pt-2"
+		style="background-color: <%= $bg_color %> !important"
+		>
+    <div class="d-flex justify-content-between">
+    	<div id="title-<%= $item->id %>">
+    		<p class="item-first-line"><span class="item-label font-weight-bold pl-2 mb-1"><%= $item->label %><span> - added <%= $item->date_added %></p>
+    	</div>
+    	<div>
+			<a href="/edit/<%= $item->id %>"
+				class="mr-2"
+				hx-get="/edit/<%= $item->id %>"
+				hx-target="div#item-<%= $item->id %>"
+				hx-swap="outerHTML"
+				hx-push-url="false"
+				data-tooltip="edit"
+			><i class="bi bi-pencil"></i></a>
+    	</div>
+	</div>
+
+	<div id="desc-<%= $item->id %>">
+    	<p class="item-description pl-2"><%= length $item->{'description'} ? $item->description : '(no description)' %></p>
+	</div>
+
+    <div class="d-flex justify-content-end">
+    	<a href="/<%= $active_operation %>/<%= $item->id %>"
+    		class="mr-1"
+ 	  		hx-get="/<%= $active_operation %>/<%= $item->id %>"
+    		hx-target="div#item-<%= $item->id %>"
+    		hx-swap="outerHTML"
+    		hx-push-url="false"
+    		data-tooltip="<%= $active_operation %>"
+    	><i class="bi <%= $active_icon %>"></i></a>
+
+    	<a href="/delete/<%= $item->id %>"
+    		class="ml-1 mr-2"
+    		hx-get="/delete/<%= $item->id %>"
+    		hx-target="div#item-<%= $item->id %>"
+    		hx-swap="outerHTML"
+    		hx-push-url="false"
+    		data-tooltip="delete"
+    	><i class="bi bi-trash text-danger"></i></a>
+    </div>
+    </form>
 </div>
-<!-- ---------------------------------------------------------------------- -->

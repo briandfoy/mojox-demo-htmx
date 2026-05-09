@@ -61,8 +61,16 @@ sub startup ($app) {
 	my $r = $app->routes;
 	push @{$r->namespaces}, 'MojoX::Demo::Controller';
 
-	$r->get('/')    ->to('Example#main');
-	$r->post('/add')->to('Example#add');
+	$r->get('/')          ->to('Example#main');
+	$r->post('/add')      ->to('Example#add');
+	$r->get('/edit/:id')  ->to('Example#edit');
+
+	my @mutators = qw(activate deactivate delete save);
+	foreach my $mutator (@mutators) {
+		$r->post("/$mutator/:id")->to("Example#$mutator");
+		}
+
+	return 1;
 	}
 
 1;

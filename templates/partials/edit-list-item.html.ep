@@ -1,0 +1,36 @@
+<div id="item-<%= $item->id %>"
+		class="list-item border rounded-3 mb-4 pt-2"
+		style="background-color: #28a74550 !important"
+		>
+	<form id="item-form"
+		hx-post="/save/<%= $item->id %>"
+		hx-target="div#item-<%= $item->id %>"
+		hx-swap="outerHTML"
+		hx-push-url="false"
+		hx-target=""
+		>
+
+		<div class="pl-2 pr-2">
+    	<input class="form-control" type="text" name="label" value="<%= $item->label %>" required />
+    	</div>
+
+    	<div class="pl-2 pr-2 pt-2">
+    	<input class="form-control" type="text" name="description" value="<%= $item->description %>" />
+		</div>
+
+		<div class="d-flex justify-content-end pt-2 pr-4 pb-2">
+			<button
+				type="submit"
+				name="action"
+				value="save"
+				class="btn btn-primary mr-2"
+			>Save</button>
+			<button
+				type="submit"
+				name="action"
+				value="cancel"
+				class="btn btn-primary"
+			>Cancel</button>
+		</div>
+    </form>
+</div>
