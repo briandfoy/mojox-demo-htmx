@@ -36,7 +36,7 @@
 		</div>
 
 		<div id="list-items" class="container">
-			<% foreach my $item ( $items->@* ) { %>
+			<% foreach my $item ( sort { $a->epoch_added <=> $b->epoch_added } $items->@* ) { next if $item->deleted; %>
 				<%= include 'partials/list-item', item => $item %>
 			<% } %>
 		</div>
