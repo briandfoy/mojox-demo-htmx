@@ -56,6 +56,8 @@ sub startup ($app) {
 	my $model = MojoX::Demo::Model::Items->new;
 	$app->helper( model => sub ($c) { $model } );
 
+	$app->renderer->cache->max_keys(0);
+
 	my $r = $app->routes;
 	push @{$r->namespaces}, 'MojoX::Demo::Controller';
 
