@@ -8,10 +8,6 @@
   </head>
   <body>
 
-	<div id="main-content" class="container py-3 my-3">
-  		<p class="content"><%= $content %></p>
-	</div>
-
 	<div id="list-content" class="container">
 		<div id="form-content" class="container mb-5 p-3 text-white bg-secondary border">
 			<form id="item-form"
