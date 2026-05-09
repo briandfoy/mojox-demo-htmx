@@ -27,6 +27,8 @@
 				<div class="container d-flex justify-content-end pt-2 pr-2">
 					<button
 						type="submit"
+						name="action"
+						value="add"
 						class="btn btn-primary"
 					>Add</button>
 				</div>
