@@ -122,6 +122,14 @@ sub do_it {
 	WriteMakefile( %$arguments );
 	}
 
+sub MY::postamble {
+    return <<~"POSTAMBLE";
+	.PHONY: start
+	start ::
+		morbo script/mojo-demo-htmx
+
+	POSTAMBLE
+	}
 
 no warnings;
 __PACKAGE__;
