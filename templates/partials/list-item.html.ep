@@ -29,7 +29,7 @@
     <div class="d-flex justify-content-end">
     	<a href="/<%= $active_operation %>/<%= $item->id %>"
     		class="mr-1"
- 	  		hx-get="/<%= $active_operation %>/<%= $item->id %>"
+ 	  		hx-post="/<%= $active_operation %>/<%= $item->id %>"
     		hx-target="div#item-<%= $item->id %>"
     		hx-swap="outerHTML"
     		hx-push-url="false"
@@ -38,7 +38,7 @@
 
     	<a href="/delete/<%= $item->id %>"
     		class="ml-1 mr-2"
-    		hx-get="/delete/<%= $item->id %>"
+    		hx-post="/delete/<%= $item->id %>"
     		hx-target="div#item-<%= $item->id %>"
     		hx-swap="outerHTML"
     		hx-push-url="false"
