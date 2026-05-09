@@ -75,10 +75,6 @@ package MojoX::Demo::Model::Item {
 		my %hash = $self->%*;
 		\%hash;
 		}
-
-	sub update ($self) {
-
-		}
 	}
 
 package MojoX::Demo::Model::Items;
