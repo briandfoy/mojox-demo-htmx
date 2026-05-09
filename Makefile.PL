@@ -82,7 +82,9 @@ my %WriteMakefile = (
 		},
 
 	'PREREQ_PM' => {
-		'Carp' => '0',
+		'Carp'        => '0',
+		'Data::UUID'  => '0',
+		'Mojolicious' => '0'
 		},
 
 	'META_MERGE' => {
